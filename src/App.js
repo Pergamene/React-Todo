@@ -4,7 +4,6 @@ import TodoList from './components/TodoList.js';
 import TodoForm from './components/TodoForm.js';
 
 class App extends React.Component {
-  // STORE DATA HERE [{task: 'name', id: Date.now(), completed: false}];
   constructor(props) {
     super(props);
 
@@ -21,10 +20,27 @@ class App extends React.Component {
           completed: false,
         },
       ],
+      inputValue: '',
     }
   }
-  // HANDLER FUNCTIONS
 
+  //HANDLER FUNCTIONS
+  handleSubmit = event => {
+    event.preventDefault();
+    const newTodo = {
+      task: this.state.inputValue,
+      id: Date.now(),
+      completed: false
+    }
+    this.setState({inputValue: ''});
+    const newData = [...this.state.data]
+    newData.push(newTodo);
+    this.setState({data: newData});
+  }
+
+  handleChange = event => {
+    this.setState({inputValue: event.target.value});
+  }
 
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -34,7 +50,7 @@ class App extends React.Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList data={this.state.data} />
-        <TodoForm />
+        <TodoForm inputValue={this.state.inputValue} handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
       </div>
     );
   }
