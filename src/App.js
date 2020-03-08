@@ -43,7 +43,7 @@ class App extends React.Component {
   }
 
   handleClick = event => {
-    const targetId = parseInt(event._targetInst.return.key);
+    const targetId = parseInt(event._targetInst.return.return.key);
     const newData = [...this.state.data];
     const targetIndex = newData.findIndex(element => {
       return element.id === targetId;
