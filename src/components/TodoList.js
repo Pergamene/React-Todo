@@ -1,4 +1,3 @@
-// Receives todos array, iterates creating <Todo />
 import React, { Fragment } from 'react';
 
 import Todo from './Todo.js';

@@ -8,7 +8,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     width: '200px',
-    // marginTop: '10px',
   },
   item: {
     marginBottom: '10px',

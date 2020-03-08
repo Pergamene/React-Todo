@@ -6,7 +6,6 @@ import TodoForm from './components/TodoForm.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       data: [
         {
@@ -24,7 +23,6 @@ class App extends React.Component {
     }
   }
 
-  //HANDLER FUNCTIONS
   handleSubmit = event => {
     event.preventDefault();
     const newTodo = {
@@ -60,9 +58,6 @@ class App extends React.Component {
     this.setState({data: newData});
   }
 
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
     return (
       <div>
