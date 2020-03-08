@@ -6,7 +6,9 @@ import React from 'react';
 class Todo extends React.Component {
   render() {
     return (
-      <div>{this.props.todo.task}</div>
+      <div onClick={this.props.handleClick}>
+        {this.props.todo.task}
+      </div>
     );
   }
 }

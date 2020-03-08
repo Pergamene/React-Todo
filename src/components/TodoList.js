@@ -7,8 +7,8 @@ class TodoList extends React.Component {
   render() {
     return (
       <Fragment>
-        {this.props.data.map((todo, index) => {
-          return <Todo todo={todo} key={index} />;
+        {this.props.data.map(todo => {
+          return <Todo todo={todo} handleClick={this.props.handleClick} key={todo.id} />;
         })}
       </Fragment>
     );

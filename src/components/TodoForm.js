@@ -10,7 +10,7 @@ class TodoForm extends React.Component {
       <form onSubmit={this.props.handleSubmit}>
         <TextField variant="outlined" label="...todo" value={this.props.inputValue} onChange={this.props.handleChange} />
         <Button type="submit" color="primary" variant="contained">Add Todo</Button>
-        <Button color="secondary" variant="contained">Clear Completed</Button>
+        <Button color="secondary" variant="contained" onClick={this.props.handleClear}>Clear Completed</Button>
       </form>
     );
   }
