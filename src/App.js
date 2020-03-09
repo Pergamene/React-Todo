@@ -40,15 +40,12 @@ class App extends React.Component {
     this.setState({inputValue: event.target.value});
   }
 
-  handleClick = event => {
-    const targetId = parseInt(event._targetInst.return.return.key);
+  handleToggleCompleted = todoIndex => {
     const newData = [...this.state.data];
-    const targetIndex = newData.findIndex(element => {
-      return element.id === targetId;
-    });
-    const newItem = {...(newData[targetIndex])};
-    newItem.completed = !newItem.completed;
-    newData[targetIndex] = newItem;
+    newData[todoIndex] = {
+      ...newData[todoIndex],
+      completed: !newData[todoIndex].completed
+    };
     this.setState({data: newData});
   }
 
@@ -62,7 +59,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList data={this.state.data} setClickId={this.setClickId} handleClick={this.handleClick} />
+        <TodoList data={this.state.data} setClickId={this.setClickId} handleToggleCompleted={this.handleToggleCompleted} />
         <TodoForm inputValue={this.state.inputValue} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClear={this.handleClear} />
       </div>
     );

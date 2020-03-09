@@ -4,10 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = {
   root: {
     marginBottom: '5px',
+    color: '#000',
   },
   done: {
     marginBottom: '5px',
     textDecoration: 'line-through',
+    color: '#888',
   }
 };
 

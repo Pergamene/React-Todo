@@ -1,17 +1,29 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
 
 import Todo from './Todo.js';
 
+const styles = {
+  root: {
+    marginBottom: '10px',
+  },
+};
+
 class TodoList extends React.Component {
+  handleClick(index) {
+    this.props.handleToggleCompleted(index);
+  }
+
   render() {
+    const { classes } = this.props;
     return (
-      <Fragment>
-        {this.props.data.map(todo => {
-          return <Todo todo={todo} handleClick={this.props.handleClick} key={todo.id} />;
+      <div className={classes.root}>
+        {this.props.data.map((todo, index) => {
+          return <Todo todo={todo} handleClick={() => this.handleClick(index)} key={todo.id} />;
         })}
-      </Fragment>
+      </div>
     );
   }
 }
 
-export default TodoList;
+export default withStyles(styles)(TodoList);
