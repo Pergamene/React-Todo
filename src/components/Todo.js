@@ -5,11 +5,13 @@ const styles = {
   root: {
     marginBottom: '5px',
     color: '#000',
+    cursor: 'pointer',
   },
   done: {
     marginBottom: '5px',
     textDecoration: 'line-through',
     color: '#888',
+    cursor: 'pointer',
   }
 };
 
