@@ -31,9 +31,7 @@ class App extends React.Component {
       completed: false
     }
     this.setState({inputValue: ''});
-    const newData = [...this.state.data]
-    newData.push(newTodo);
-    this.setState({data: newData});
+    this.setState({data: [...this.state.data, newTodo]});
   }
 
   handleChange = event => {
