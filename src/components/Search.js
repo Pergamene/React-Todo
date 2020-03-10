@@ -14,7 +14,7 @@ const styles = {
   },
 };
 
-class TodoForm extends React.Component {
+class Search extends React.Component {
   render() {
     const { classes } = this.props;
     return (
@@ -26,4 +26,4 @@ class TodoForm extends React.Component {
   }
 }
 
-export default withStyles(styles)(TodoForm);
+export default withStyles(styles)(Search);

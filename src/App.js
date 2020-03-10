@@ -78,6 +78,7 @@ class App extends React.Component {
     event.preventDefault();
     const newData = this.state.data.filter(element => element.completed === false);
     this.setState({data: newData});
+    this.setState({displayData: newData});
   }
 
   handleSearchClear = event => {
