@@ -4,34 +4,25 @@ import Search from './components/Search.js';
 import TodoList from './components/TodoList.js';
 import TodoForm from './components/TodoForm.js';
 
+const seedData = [
+  {
+    task: 'Display Todo List',
+    id: 1528817077286,
+    completed: false,
+  },
+  {
+    task: 'Add to Todo List',
+    id: 1528817084358,
+    completed: false,
+  },
+];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        {
-          task: 'Display Todo List',
-          id: 1528817077286,
-          completed: false,
-        },
-        {
-          task: 'Add to Todo List',
-          id: 1528817084358,
-          completed: false,
-        },
-      ],
-      displayData: [
-        {
-          task: 'Display Todo List',
-          id: 1528817077286,
-          completed: false,
-        },
-        {
-          task: 'Add to Todo List',
-          id: 1528817084358,
-          completed: false,
-        },
-      ],
+      data: seedData,
+      displayData: seedData,
       inputValue: '',
       searchInput: '',
     }
@@ -45,8 +36,7 @@ class App extends React.Component {
       completed: false
     }
     this.setState({inputValue: ''});
-    this.setState({data: [...this.state.data, newTodo]});
-    this.setState({displayData: [...this.state.displayData, newTodo]});
+    this.changeData(newTodo, false);
   }
 
   handleSearchSubmit = event => {
@@ -70,20 +60,28 @@ class App extends React.Component {
       ...newData[todoIndex],
       completed: !newData[todoIndex].completed
     };
-    this.setState({data: newData});
-    this.setState({displayData: newData});
+    this.changeData(newData, true);
   }
 
   handleClear = event => {
     event.preventDefault();
     const newData = this.state.data.filter(element => element.completed === false);
-    this.setState({data: newData});
-    this.setState({displayData: newData});
+    this.changeData(newData, true);
   }
 
   handleSearchClear = event => {
     event.preventDefault();
     this.setState({displayData: [...this.state.data]});
+  }
+
+  changeData = (newData, replace) => {
+    if (replace) {
+      this.setState({data: newData});
+      this.setState({displayData: newData});
+    } else {
+      this.setState({data: [...this.state.data, newData]});
+      this.setState({displayData: [...this.state.displayData, newData]});
+    }
   }
 
   render() {
