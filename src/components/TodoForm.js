@@ -15,11 +15,27 @@ const styles = {
 };
 
 class TodoForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: '',
+    };
+  }
+
+  handleChange = event => {
+    this.setState({inputValue: event.target.value});
+  }
+
+  submit = event => {
+    this.props.handleSubmit(event, this.state.inputValue);
+    this.setState({inputValue: ''});
+  }
+
   render() {
     const { classes } = this.props;
     return (
-      <form className={classes.root} onSubmit={this.props.handleSubmit}>
-        <TextField className={classes.item} variant="outlined" label="...todo" value={this.props.inputValue} onChange={this.props.handleChange} />
+      <form className={classes.root} onSubmit={this.submit}>
+        <TextField className={classes.item} variant="outlined" label="...todo" value={this.state.inputValue} onChange={this.handleChange} />
         <Button className={classes.item} type="submit" color="primary" variant="contained">Add Todo</Button>
         <Button className={classes.item} color="secondary" variant="contained" onClick={this.props.handleClear}>Clear Completed</Button>
       </form>

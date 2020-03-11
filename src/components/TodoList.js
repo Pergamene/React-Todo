@@ -18,7 +18,7 @@ class TodoList extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        {this.props.data.map((todo, index) => {
+        {this.props.filterData().map((todo, index) => {
           return <Todo todo={todo} handleClick={() => this.handleClick(index)} key={todo.id} />;
         })}
       </div>

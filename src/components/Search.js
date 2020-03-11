@@ -15,11 +15,27 @@ const styles = {
 };
 
 class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: '',
+    };
+  }
+
+  handleSearchChange = event => {
+    this.setState({input: event.target.value});
+  }
+
+  submit = event => {
+    this.props.handleSearchSubmit(event, this.state.input);
+    this.setState({input: ''});
+  }
+
   render() {
     const { classes } = this.props;
     return (
-      <form className={classes.root} onSubmit={this.props.handleSearchSubmit}>
-        <TextField className={classes.item} variant="outlined" label="Search" value={this.props.searchInput} onChange={this.props.handleSearchChange} />
+      <form className={classes.root} onSubmit={this.submit}>
+        <TextField className={classes.item} variant="outlined" label="Search" value={this.state.input} onChange={this.handleSearchChange} helperText={(this.props.searchInput === '') ? '' : `Searching for: ${this.props.searchInput}`} />
         <Button className={classes.item} color="secondary" variant="contained" onClick={this.props.handleSearchClear}>Clear Search</Button>
       </form>
     );
