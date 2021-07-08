@@ -1,2 +1,29 @@
-// your components will all go in this `component` directory.
-// feel free to change this component.js into TodoList.js
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+
+import Todo from './Todo.js';
+
+const styles = {
+  root: {
+    marginBottom: '10px',
+  },
+};
+
+class TodoList extends React.Component {
+  handleClick(index) {
+    this.props.handleToggleCompleted(index);
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        {this.props.filterData().map((todo, index) => {
+          return <Todo todo={todo} handleClick={() => this.handleClick(index)} key={todo.id} />;
+        })}
+      </div>
+    );
+  }
+}
+
+export default withStyles(styles)(TodoList);
